@@ -53,5 +53,4 @@ public class Gestor implements IModel<GestorContaAcessoDto>{
 		return new GestorContaAcessoDto(this);
 	}
 	
-
 }

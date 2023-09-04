@@ -52,5 +52,4 @@ public class Associado implements IModel<AssociadoContaAcessoDto>{
 		return new AssociadoContaAcessoDto(this);
 	}
 	
-	
 }

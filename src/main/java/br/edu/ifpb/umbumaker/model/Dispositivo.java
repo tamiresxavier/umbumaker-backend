@@ -30,6 +30,10 @@ public class Dispositivo {
 		this.filamentosSuportados = filamentosSuportados;
 	}
 
+	public Dispositivo() {
+		
+	}
+
 	public Long getCodigo() {
 		return codigo;
 	}
