@@ -2,7 +2,7 @@ package br.edu.ifpb.umbumaker.presentation.dto;
 
 import br.edu.ifpb.umbumaker.model.ContaAcesso;
 
-public class ContaAcessoDto implements IDto<ContaAcesso>{
+public class ContaAcessoDto implements IDto<ContaAcesso> {
 	
 	private String nome; 
 	private String email; 
