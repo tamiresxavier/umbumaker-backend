@@ -1,54 +1,103 @@
 package br.edu.ifpb.umbumaker.presentation.dto;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
-public class DispositivoDto {
-    private String modelo;
-    private Date ultimaManutencao;
-    private String temperaturaMaxima;
-    private Integer eixo;
-    private List<FilamentoDto> filamentosSuportados;
+import br.edu.ifpb.umbumaker.model.Dispositivo;
 
-	
-	public DispositivoDto(String modelo, Date ultimaManutencao, String temperaturaMaxima, Integer eixo,
-			List<FilamentoDto> filamentosSuportados) {
+import br.edu.ifpb.umbumaker.model.enums.TipoDispositivo;
+import br.edu.ifpb.umbumaker.model.enums.TipoFilamento;
+
+public class DispositivoDto implements IDto<Dispositivo> {
+    private String modelo;
+    private LocalDate ultimaManutencao;
+    private String temperaturaMaxima;
+    private Integer eixoX;
+    private Integer eixoY;
+    private Integer eixoZ;
+    private TipoDispositivo tipo;
+    private List<TipoFilamento> tipoFilamentoSuportado;
+
+	public DispositivoDto(String modelo, LocalDate ultimaManutencao, String temperaturaMaxima, Integer eixoX,
+			Integer eixoY, Integer eixoZ, TipoDispositivo tipo, List<TipoFilamento> tipoFilamentoSuportado) {
 		this.modelo = modelo;
 		this.ultimaManutencao = ultimaManutencao;
 		this.temperaturaMaxima = temperaturaMaxima;
-		this.eixo = eixo;
-		this.filamentosSuportados = filamentosSuportados;
+		this.eixoX = eixoX;
+		this.eixoY = eixoY;
+		this.eixoZ = eixoZ;
+		this.tipo = tipo;
+		this.tipoFilamentoSuportado = tipoFilamentoSuportado;
 	}
 	
 	public String getModelo() {
 		return modelo;
 	}
+	
 	public void setModelo(String modelo) {
 		this.modelo = modelo;
 	}
-	public Date getUltimaManutencao() {
+	
+	public LocalDate getUltimaManutencao() {
 		return ultimaManutencao;
 	}
-	public void setUltimaManutencao(Date ultimaManutencao) {
+	
+	public void setUltimaManutencao(LocalDate ultimaManutencao) {
 		this.ultimaManutencao = ultimaManutencao;
 	}
+	
 	public String getTemperaturaMaxima() {
 		return temperaturaMaxima;
 	}
+	
 	public void setTemperaturaMaxima(String temperaturaMaxima) {
 		this.temperaturaMaxima = temperaturaMaxima;
 	}
-	public Integer getEixo() {
-		return eixo;
+	
+	public Integer getEixoX() {
+		return eixoX;
 	}
-	public void setEixo(Integer eixo) {
-		this.eixo = eixo;
+	
+	public void setEixoX(Integer eixoX) {
+		this.eixoX = eixoX;
 	}
-	public List<FilamentoDto> getFilamentosSuportados() {
-		return filamentosSuportados;
+	
+	public Integer getEixoY() {
+		return eixoY;
 	}
-	public void setFilamentosSuportados(List<FilamentoDto> filamentosSuportados) {
-		this.filamentosSuportados = filamentosSuportados;
+	
+	public void setEixoY(Integer eixoY) {
+		this.eixoY = eixoY;
+	}
+	
+	public Integer getEixoZ() {
+		return eixoZ;
+	}
+	
+	public void setEixoZ(Integer eixoZ) {
+		this.eixoZ = eixoZ;
 	}
 
+	public TipoDispositivo getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(TipoDispositivo tipo) {
+		this.tipo = tipo;
+	}
+	
+	public List<TipoFilamento> getTipofilamentoSuportado() {
+		return tipoFilamentoSuportado;
+	}
+
+	public void setTipofilamentoSuportado(List<TipoFilamento> tipofilamentoSuportado) {
+		this.tipoFilamentoSuportado = tipofilamentoSuportado;
+	}
+
+	@Override
+	public Dispositivo toModel() {
+		return new Dispositivo (this.modelo, this.ultimaManutencao,this.temperaturaMaxima,
+				this.eixoX,this.eixoY,this.eixoZ,this.tipo,this.tipoFilamentoSuportado);
+	}
+	
 }

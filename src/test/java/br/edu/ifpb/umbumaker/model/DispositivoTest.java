@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 public class DispositivoTest {
 
     @Autowired
-    private DispositivoRepository dispositivoRepository;
+    private DispositivoRepository dispositivo3DRepository;
 
     @Test
     public void testDispositivoIdGerado() {
@@ -23,7 +23,7 @@ public class DispositivoTest {
         Dispositivo dispositivo = new Dispositivo();
 
         // Salvar o Dispositivo no repositório
-        dispositivo = dispositivoRepository.save(dispositivo);
+        dispositivo = dispositivo3DRepository.save(dispositivo);
 
         // Verificar se o ID do Dispositivo foi gerado corretamente
         assertNotNull(dispositivo.getCodigo());
@@ -37,10 +37,10 @@ public class DispositivoTest {
         dispositivo.setTemperaturaMaxima("Temperatura Máxima Teste");
 
         // Salvar o Dispositivo no repositório
-        dispositivo = dispositivoRepository.save(dispositivo);
+        dispositivo = dispositivo3DRepository.save(dispositivo);
 
         // Recuperar o Dispositivo do repositório usando o ID
-        Dispositivo retrievedDispositivo = dispositivoRepository.findById(dispositivo.getCodigo()).orElse(null);
+        Dispositivo retrievedDispositivo = dispositivo3DRepository.findById(dispositivo.getCodigo()).orElse(null);
 
         assertNotNull(retrievedDispositivo);
         assertEquals("Modelo de Teste", retrievedDispositivo.getModelo());

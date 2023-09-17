@@ -26,8 +26,11 @@ public class DispositivoService {
     	dispositivoExistente.setModelo(dispositivo.getModelo());  
     	dispositivoExistente.setUltimaManutencao(dispositivo.getUltimaManutencao());
     	dispositivoExistente.setTemperaturaMaxima(dispositivo.getTemperaturaMaxima());
-    	dispositivoExistente.setEixo(dispositivo.getEixo());
-    	dispositivoExistente.setFilamentosSuportados(dispositivo.getFilamentosSuportados());
+    	dispositivoExistente.setEixoX(dispositivo.getEixoX());
+    	dispositivoExistente.setEixoY(dispositivo.getEixoY());
+    	dispositivoExistente.setEixoZ(dispositivo.getEixoZ());
+    	dispositivoExistente.setTipo(dispositivo.getTipo());
+    	dispositivoExistente.setTipoFilamentoSuportado(dispositivo.getTipoFilamentoSuportado());
 
         return dispositivoRepository.save(dispositivoExistente);
     }

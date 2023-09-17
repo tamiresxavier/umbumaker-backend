@@ -1,33 +1,46 @@
 package br.edu.ifpb.umbumaker.model;
 
-import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
+
+import br.edu.ifpb.umbumaker.model.enums.TipoDispositivo;
+import br.edu.ifpb.umbumaker.model.enums.TipoFilamento;
+import br.edu.ifpb.umbumaker.presentation.dto.DispositivoDto;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
 
 @Entity
-public class Dispositivo {
+public class Dispositivo implements IModel<DispositivoDto> {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long codigo;
 	private String modelo;
-	private Date ultimaManutencao;
+	private LocalDate ultimaManutencao;
 	private String temperaturaMaxima;
-	private Integer eixo;
+	private Integer eixoX;
+	private Integer eixoY;
+	private Integer eixoZ;
 	
-	@OneToMany(mappedBy = "dispositivo")
-	private List<Filamento> filamentosSuportados;
+	@Enumerated(EnumType.STRING)
+	private TipoDispositivo tipo;
+	
+	@Enumerated(EnumType.STRING)
+	private List<TipoFilamento> tipoFilamentoSuportado;
 
-	public Dispositivo(String modelo, Date ultimaManutencao, String temperaturaMaxima, Integer eixo,
-			List<Filamento> filamentosSuportados) {
+	public Dispositivo(String modelo, LocalDate ultimaManutencao, String temperaturaMaxima, Integer eixoX, Integer eixoY,
+			Integer eixoZ, TipoDispositivo tipo, List<TipoFilamento> tipoFilamentoSuportado) {
 		this.modelo = modelo;
 		this.ultimaManutencao = ultimaManutencao;
 		this.temperaturaMaxima = temperaturaMaxima;
-		this.eixo = eixo;
-		this.filamentosSuportados = filamentosSuportados;
+		this.eixoX = eixoX;
+		this.eixoY = eixoY;
+		this.eixoZ = eixoZ;
+		this.tipo = tipo;
+		this.tipoFilamentoSuportado = tipoFilamentoSuportado;
 	}
 
 	public Dispositivo() {
@@ -50,11 +63,11 @@ public class Dispositivo {
 		this.modelo = modelo;
 	}
 
-	public Date getUltimaManutencao() {
+	public LocalDate getUltimaManutencao() {
 		return ultimaManutencao;
 	}
 
-	public void setUltimaManutencao(Date ultimaManutencao) {
+	public void setUltimaManutencao(LocalDate ultimaManutencao) {
 		this.ultimaManutencao = ultimaManutencao;
 	}
 
@@ -66,20 +79,50 @@ public class Dispositivo {
 		this.temperaturaMaxima = temperaturaMaxima;
 	}
 
-	public Integer getEixo() {
-		return eixo;
+	public Integer getEixoX() {
+		return eixoX;
 	}
 
-	public void setEixo(Integer eixo) {
-		this.eixo = eixo;
+	public void setEixoX(Integer eixoX) {
+		this.eixoX = eixoX;
 	}
 
-	public List<Filamento> getFilamentosSuportados() {
-		return filamentosSuportados;
+	public Integer getEixoY() {
+		return eixoY;
 	}
 
-	public void setFilamentosSuportados(List<Filamento> filamentosSuportados) {
-		this.filamentosSuportados = filamentosSuportados;
+	public void setEixoY(Integer eixoY) {
+		this.eixoY = eixoY;
+	}
+
+	public Integer getEixoZ() {
+		return eixoZ;
+	}
+
+	public void setEixoZ(Integer eixoZ) {
+		this.eixoZ = eixoZ;
+	}
+
+	public TipoDispositivo getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(TipoDispositivo tipo) {
+		this.tipo = tipo;
+	}
+
+	public List<TipoFilamento> getTipoFilamentoSuportado() {
+		return tipoFilamentoSuportado;
+	}
+
+	public void setTipoFilamentoSuportado(List<TipoFilamento> tipoFilamentoSuportado) {
+		this.tipoFilamentoSuportado = tipoFilamentoSuportado;
+	}
+
+	@Override
+	public DispositivoDto toDto() {
+		return new DispositivoDto (this.modelo, this.ultimaManutencao,this.temperaturaMaxima,
+				this.eixoX,this.eixoY,this.eixoZ,this.tipo,this.tipoFilamentoSuportado);
 	}
 
 }

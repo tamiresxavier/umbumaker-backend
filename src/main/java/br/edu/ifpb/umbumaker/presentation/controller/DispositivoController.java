@@ -18,14 +18,12 @@ public class DispositivoController {
     @Autowired
     private DispositivoService dispositivoService;
 
-  
     @PostMapping
     public ResponseEntity<Dispositivo> criarDispositivo(@RequestBody Dispositivo dispositivo) {
     	Dispositivo novoDispositivo = dispositivoService.criarDispositivo(dispositivo);
         return ResponseEntity.status(HttpStatus.CREATED).body(novoDispositivo);
     }
 
-   
     @PutMapping("/{id}")
     public ResponseEntity<Dispositivo> atualizarContaAcesso(@PathVariable Long codigo, @RequestBody Dispositivo dispositivo) {
         try {
@@ -35,7 +33,6 @@ public class DispositivoController {
             return ResponseEntity.notFound().build();
         }
     }
-
     
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deletarContaAcesso(@PathVariable Long codigo) {
