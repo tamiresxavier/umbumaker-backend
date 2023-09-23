@@ -18,7 +18,7 @@ O *Umbu Maker* utiliza as mais modernas tecnologias para garantir sua eficiênci
 - *Linguagem de Programação*: Java
 - *Framework Backend*: Spring Boot
 - *Banco de Dados*: PostgreSQL
-- *Framework Frontend*: React
+- *Framework Frontend*: React Native Prime
 - *Autenticação e Autorização*: Spring Security
 - *Controle de Versão*: Git
 
