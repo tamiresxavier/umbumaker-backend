@@ -28,8 +28,6 @@ public class InsumoService {
     	insumoExistente.setQuantidadeMinimaEstoque(insumo.getQuantidadeMinimaEstoque());
     	insumoExistente.setQuantidadeDiasAlertaVencimento(insumo.getQuantidadeDiasAlertaVencimento());
     	insumoExistente.setUnidadeMedida(insumo.getUnidadeMedida());
-    	insumoExistente.setArmario(insumo.getArmario());
-    	insumoExistente.setNicho(insumo.getNicho());
     	
         return insumoRepository.save(insumoExistente);
     }

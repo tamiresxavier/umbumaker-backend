@@ -1,7 +1,7 @@
 package br.edu.ifpb.umbumaker.presentation.dto;
 
 import br.edu.ifpb.umbumaker.model.Insumo;
-import br.edu.ifpb.umbumaker.model.LocalArmazenamento;
+import br.edu.ifpb.umbumaker.model.enums.StatusEstoque;
 import br.edu.ifpb.umbumaker.model.enums.UnidadeMedida;
 
 public class InsumoDto implements IDto<Insumo> {
@@ -10,19 +10,16 @@ public class InsumoDto implements IDto<Insumo> {
 	private Integer quantidadeMinimaEstoque;
 	private Integer quantidadeDiasAlertaVencimento;
 	private UnidadeMedida unidadeMedida;
-	private LocalArmazenamento armario;
-	private LocalArmazenamento nicho;
-	
+	private StatusEstoque statusEstoque;
+
 	public InsumoDto(String nome, Integer quantidadeTotal, Integer quantidadeMinimaEstoque,
-			Integer quantidadeDiasAlertaVencimento, UnidadeMedida unidadeMedida, LocalArmazenamento armario,
-			LocalArmazenamento nicho) {
+			Integer quantidadeDiasAlertaVencimento, UnidadeMedida unidadeMedida, StatusEstoque statusEstoque) {
 		this.nome = nome;
 		this.quantidadeTotal = quantidadeTotal;
 		this.quantidadeMinimaEstoque = quantidadeMinimaEstoque;
 		this.quantidadeDiasAlertaVencimento = quantidadeDiasAlertaVencimento;
 		this.unidadeMedida = unidadeMedida;
-		this.armario = armario;
-		this.nicho = nicho;
+		this.statusEstoque = statusEstoque;
 	}
 
 	public String getNome() {
@@ -65,26 +62,18 @@ public class InsumoDto implements IDto<Insumo> {
 		this.unidadeMedida = unidadeMedida;
 	}
 
-	public LocalArmazenamento getArmario() {
-		return armario;
+	public StatusEstoque getStatusEstoque() {
+		return statusEstoque;
 	}
 
-	public void setArmario(LocalArmazenamento armario) {
-		this.armario = armario;
-	}
-
-	public LocalArmazenamento getNicho() {
-		return nicho;
-	}
-
-	public void setNicho(LocalArmazenamento nicho) {
-		this.nicho = nicho;
+	public void setStatusEstoque(StatusEstoque statusEstoque) {
+		this.statusEstoque = statusEstoque;
 	}
 
 	@Override
 	public Insumo toModel() {
 		return new Insumo (this.nome, this.quantidadeTotal, this.quantidadeMinimaEstoque, 
-				this.quantidadeDiasAlertaVencimento, this.unidadeMedida, this.armario, this.nicho);
+				this.quantidadeDiasAlertaVencimento, this.unidadeMedida, this.statusEstoque);
 	}
 	
 }

@@ -1,5 +1,6 @@
 package br.edu.ifpb.umbumaker.model;
 
+import br.edu.ifpb.umbumaker.model.enums.StatusEstoque;
 import br.edu.ifpb.umbumaker.model.enums.UnidadeMedida;
 import br.edu.ifpb.umbumaker.presentation.dto.InsumoDto;
 import jakarta.persistence.Entity;
@@ -8,8 +9,6 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Insumo implements IModel<InsumoDto> {
@@ -24,26 +23,19 @@ public class Insumo implements IModel<InsumoDto> {
 	@Enumerated(EnumType.STRING)
 	private UnidadeMedida unidadeMedida;
 	
-	@ManyToOne
-	@JoinColumn(name = "codigoArmario")
-	private LocalArmazenamento armario;
-	
-	@ManyToOne
-	@JoinColumn(name = "codigoNicho")
-	private LocalArmazenamento nicho;
+	@Enumerated(EnumType.STRING)
+	private StatusEstoque statusEstoque;
 	
 	public Insumo(String nome, Integer quantidadeTotal, Integer quantidadeMinimaEstoque,
-			Integer quantidadeDiasAlertaVencimento, UnidadeMedida unidadeMedida, LocalArmazenamento armario,
-			LocalArmazenamento nicho) {
+			Integer quantidadeDiasAlertaVencimento, UnidadeMedida unidadeMedida, StatusEstoque statusEstoque) {
 		this.nome = nome;
 		this.quantidadeTotal = quantidadeTotal;
 		this.quantidadeMinimaEstoque = quantidadeMinimaEstoque;
 		this.quantidadeDiasAlertaVencimento = quantidadeDiasAlertaVencimento;
 		this.unidadeMedida = unidadeMedida;
-		this.armario = armario;
-		this.nicho = nicho;
+		this.statusEstoque = statusEstoque;
 	}
-	
+
 	public Insumo() {
 		
 	}
@@ -96,26 +88,18 @@ public class Insumo implements IModel<InsumoDto> {
 		this.unidadeMedida = unidadeMedida;
 	}
 	
-	public LocalArmazenamento getArmario() {
-		return armario;
+	public StatusEstoque getStatusEstoque() {
+		return statusEstoque;
 	}
-	
-	public void setArmario(LocalArmazenamento armario) {
-		this.armario = armario;
-	}
-	
-	public LocalArmazenamento getNicho() {
-		return nicho;
-	}
-	
-	public void setNicho(LocalArmazenamento nicho) {
-		this.nicho = nicho;
+
+	public void setStatusEstoque(StatusEstoque statusEstoque) {
+		this.statusEstoque = statusEstoque;
 	}
 
 	@Override
 	public InsumoDto toDto() {
 		return new InsumoDto (this.nome, this.quantidadeTotal, this.quantidadeMinimaEstoque, 
-				this.quantidadeDiasAlertaVencimento, this.unidadeMedida, this.armario, this.nicho);
+				this.quantidadeDiasAlertaVencimento, this.unidadeMedida, this.statusEstoque);
 	}
 
 }
