@@ -34,5 +34,5 @@ Para executar o *Umbumaker* em seu ambiente local, siga estas etapas:
 ## Autoras 👨‍💻
 
 - *Débora Cristiane, Maria Eliana e Tamires Xavier*
-- *E-mail*: tamiresxavierdesousa@email.com
+- *E-mail*: tamiresxavierdesousa@gmail.com
 - *LinkedIn*: [Tamires Xavier](https://www.linkedin.com/in/tamiresx/)
