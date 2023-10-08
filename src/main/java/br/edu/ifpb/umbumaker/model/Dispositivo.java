@@ -121,7 +121,7 @@ public class Dispositivo implements IModel<DispositivoDto> {
 
 	@Override
 	public DispositivoDto toDto() {
-		return new DispositivoDto (this.modelo, this.ultimaManutencao,this.temperaturaMaxima,
+		return new DispositivoDto(this.modelo, this.ultimaManutencao,this.temperaturaMaxima,
 				this.eixoX,this.eixoY,this.eixoZ,this.tipo,this.tipoFilamentoSuportado);
 	}
 
