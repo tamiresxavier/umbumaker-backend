@@ -14,7 +14,7 @@ import jakarta.persistence.ManyToOne;
 public class ZonaTrabalho implements IModel<ZonaTrabalhoDto> {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer codigo;
+    private Long codigo;
 	private String nome;
 	private LocalDate dataAgendada;
 	private LocalDate tempoReservado;
@@ -39,11 +39,11 @@ public class ZonaTrabalho implements IModel<ZonaTrabalhoDto> {
 		
 	}
 	
-	public Integer getCodigo() {
+	public Long getCodigo() {
 		return codigo;
 	}
 
-	public void setCodigo(Integer codigo) {
+	public void setCodigo(Long codigo) {
 		this.codigo = codigo;
 	}
 
