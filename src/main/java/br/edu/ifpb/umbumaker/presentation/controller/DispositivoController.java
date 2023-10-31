@@ -1,5 +1,7 @@
 package br.edu.ifpb.umbumaker.presentation.controller;
 
+import br.edu.ifpb.umbumaker.utils.Utils;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,9 +12,11 @@ import br.edu.ifpb.umbumaker.model.Dispositivo;
 import jakarta.persistence.EntityNotFoundException;
 
 import java.util.List;
+
+
 @CrossOrigin("*")
 @RestController
-@RequestMapping("/api/umbumaker/dispositivo")
+@RequestMapping("/api/umbumaker/dispositivos")
 public class DispositivoController {
 
     @Autowired
@@ -24,18 +28,20 @@ public class DispositivoController {
         return ResponseEntity.status(HttpStatus.CREATED).body(novoDispositivo);
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<Dispositivo> atualizarDispositivo(@PathVariable Long codigo, @RequestBody Dispositivo dispositivo) {
-        try {
-        	Dispositivo dispositivoAtualizado = dispositivoService.atualizarDispositivo(codigo, dispositivo);
-            return ResponseEntity.ok(dispositivoAtualizado);
-        } catch (EntityNotFoundException e) {
-            return ResponseEntity.notFound().build();
+    @PutMapping("/{codigo}")
+    public ResponseEntity<Dispositivo> update(@PathVariable(value = "codigo") Long codigo, @RequestBody Dispositivo dispositivoModel, HttpServletRequest request){
+        var dispositivo = this.dispositivoService.findById(codigo).orElse(null);
+        if(dispositivo == null){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                    .body(dispositivo);
         }
+        Utils.copyNonNUllProperties(dispositivoModel,dispositivo);
+        var dispositivoUpdate =  this.dispositivoService.atualizarDispositivo(dispositivo.getCodigo(),dispositivo);
+        return ResponseEntity.ok().body(dispositivoUpdate);
     }
-    
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deletarDispositivo(@PathVariable Long codigo) {
+
+    @DeleteMapping("/{codigo}")
+    public ResponseEntity<Void> deletarDispositivo(@PathVariable(value = "codigo")  Long codigo) {
         try {
         	dispositivoService.deletarDispositivo(codigo);
             return ResponseEntity.noContent().build();
