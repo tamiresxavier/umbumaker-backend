@@ -47,6 +47,7 @@ public class DispositivoService {
     public Optional<Dispositivo> findById(Long codigo){
         return dispositivoRepository.findById(codigo);
     }
+    
     public List<Dispositivo> listarDispositivos() {
         return dispositivoRepository.findAll();
     }
