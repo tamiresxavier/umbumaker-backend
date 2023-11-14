@@ -25,7 +25,7 @@ public class LocalArmazenamentoController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<LocalArmazenamento> atualizarLocalArmazenamento(@PathVariable Long codigo, @RequestBody LocalArmazenamento insumo) {
+    public ResponseEntity<LocalArmazenamento> atualizarLocalArmazenamento(@PathVariable(value = "id") Long codigo, @RequestBody LocalArmazenamento insumo) {
         try {
         	LocalArmazenamento insumoAtualizado = localArmazenamentoService.atualizarLocalArmazenamento(codigo, insumo);
             return ResponseEntity.ok(insumoAtualizado);
@@ -35,7 +35,7 @@ public class LocalArmazenamentoController {
     }
     
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deletarLocalArmazenamento(@PathVariable Long codigo) {
+    public ResponseEntity<Void> deletarLocalArmazenamento(@PathVariable(value = "id") Long codigo) {
         try {
         	localArmazenamentoService.deletarLocalArmazenamento(codigo);
             return ResponseEntity.noContent().build();

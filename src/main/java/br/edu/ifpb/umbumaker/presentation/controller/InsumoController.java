@@ -25,7 +25,7 @@ public class InsumoController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Insumo> atualizarInsumo(@PathVariable Long codigo, @RequestBody Insumo insumo) {
+    public ResponseEntity<Insumo> atualizarInsumo(@PathVariable(value = "id") Long codigo, @RequestBody Insumo insumo) {
         try {
         	Insumo insumoAtualizado = insumoService.atualizarInsumo(codigo, insumo);
             return ResponseEntity.ok(insumoAtualizado);
@@ -35,7 +35,7 @@ public class InsumoController {
     }
     
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deletarInsumo(@PathVariable Long codigo) {
+    public ResponseEntity<Void> deletarInsumo(@PathVariable(value = "id") Long codigo) {
         try {
         	insumoService.deletarInsumo(codigo);
             return ResponseEntity.noContent().build();

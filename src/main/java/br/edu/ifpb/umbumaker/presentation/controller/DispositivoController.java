@@ -25,7 +25,7 @@ public class DispositivoController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Dispositivo> atualizarDispositivo(@PathVariable Long codigo, @RequestBody Dispositivo dispositivo) {
+    public ResponseEntity<Dispositivo> atualizarDispositivo(@PathVariable(value = "id") Long codigo, @RequestBody Dispositivo dispositivo) {
         try {
         	Dispositivo dispositivoAtualizado = dispositivoService.atualizarDispositivo(codigo, dispositivo);
             return ResponseEntity.ok(dispositivoAtualizado);
@@ -35,7 +35,7 @@ public class DispositivoController {
     }
     
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deletarDispositivo(@PathVariable Long codigo) {
+    public ResponseEntity<Void> deletarDispositivo(@PathVariable(value = "id") Long codigo) {
         try {
         	dispositivoService.deletarDispositivo(codigo);
             return ResponseEntity.noContent().build();
