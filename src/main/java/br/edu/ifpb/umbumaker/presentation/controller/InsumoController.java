@@ -27,6 +27,7 @@ public class InsumoController {
         return ResponseEntity.status(HttpStatus.CREATED).body(novoInsumo);
     }
 
+
     @PutMapping("/{codigo}")
     public ResponseEntity<Insumo> atualizarInsumo(@PathVariable Long codigo, @RequestBody Insumo insumoModel) {
         var insumo = this.insumoService.findById(codigo).orElse(null);

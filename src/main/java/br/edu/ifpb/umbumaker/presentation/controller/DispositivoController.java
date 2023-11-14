@@ -28,6 +28,7 @@ public class DispositivoController {
         return ResponseEntity.status(HttpStatus.CREATED).body(novoDispositivo);
     }
 
+
     @PutMapping("/{codigo}")
     public ResponseEntity<Dispositivo> update(@PathVariable(value = "codigo") Long codigo, @RequestBody Dispositivo dispositivoModel, HttpServletRequest request){
         var dispositivo = this.dispositivoService.findById(codigo).orElse(null);

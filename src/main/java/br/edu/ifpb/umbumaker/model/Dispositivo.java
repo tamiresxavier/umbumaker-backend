@@ -26,7 +26,7 @@ public class Dispositivo implements IModel<DispositivoDto> {
 	private Integer eixoZ;
 	
 	@Enumerated(EnumType.STRING)
-	private TipoDispositivo tipo;
+	private TipoDispositivo tipoDispositivo;
 	
 	@Enumerated(EnumType.STRING)
 	private List<TipoFilamento> tipoFilamentoSuportado;
@@ -39,7 +39,7 @@ public class Dispositivo implements IModel<DispositivoDto> {
 		this.eixoX = eixoX;
 		this.eixoY = eixoY;
 		this.eixoZ = eixoZ;
-		this.tipo = tipo;
+		this.tipoDispositivo = tipo;
 		this.tipoFilamentoSuportado = tipoFilamentoSuportado;
 	}
 
@@ -104,11 +104,11 @@ public class Dispositivo implements IModel<DispositivoDto> {
 	}
 
 	public TipoDispositivo getTipo() {
-		return tipo;
+		return tipoDispositivo;
 	}
 
 	public void setTipo(TipoDispositivo tipo) {
-		this.tipo = tipo;
+		this.tipoDispositivo = tipo;
 	}
 
 	public List<TipoFilamento> getTipoFilamentoSuportado() {
@@ -121,8 +121,8 @@ public class Dispositivo implements IModel<DispositivoDto> {
 
 	@Override
 	public DispositivoDto toDto() {
-		return new DispositivoDto(this.modelo, this.ultimaManutencao,this.temperaturaMaxima,
-				this.eixoX,this.eixoY,this.eixoZ,this.tipo,this.tipoFilamentoSuportado);
+		return new DispositivoDto (this.modelo, this.ultimaManutencao,this.temperaturaMaxima,
+				this.eixoX,this.eixoY,this.eixoZ,this.tipoDispositivo,this.tipoFilamentoSuportado);
 	}
 
 }

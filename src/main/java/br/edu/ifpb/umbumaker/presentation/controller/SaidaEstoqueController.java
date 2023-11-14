@@ -34,7 +34,7 @@ public class SaidaEstoqueController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<SaidaEstoque> atualizarSaidaEstoque(@PathVariable Long codigo, @RequestBody SaidaEstoque saidaEstoque) {
+    public ResponseEntity<SaidaEstoque> atualizarSaidaEstoque(@PathVariable(value = "id") Long codigo, @RequestBody SaidaEstoque saidaEstoque) {
         try {
         	SaidaEstoque saidaEstoqueAtualizado = saidaEstoqueService.atualizarSaidaEstoque(codigo, saidaEstoque);
             return ResponseEntity.ok(saidaEstoqueAtualizado);
@@ -44,7 +44,7 @@ public class SaidaEstoqueController {
     }
     
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deletarSaidaEstoque(@PathVariable Long codigo) {
+    public ResponseEntity<Void> deletarSaidaEstoque(@PathVariable(value = "id") Long codigo) {
         try {
         	saidaEstoqueService.deletarSaidaEstoque(codigo);
             return ResponseEntity.noContent().build();
