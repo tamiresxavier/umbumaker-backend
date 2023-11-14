@@ -1,6 +1,7 @@
 package br.edu.ifpb.umbumaker.business.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -43,6 +44,10 @@ public class DispositivoService {
         dispositivoRepository.deleteById(codigo);
     }
 
+    public Optional<Dispositivo> findById(Long codigo){
+        return dispositivoRepository.findById(codigo);
+    }
+    
     public List<Dispositivo> listarDispositivos() {
         return dispositivoRepository.findAll();
     }

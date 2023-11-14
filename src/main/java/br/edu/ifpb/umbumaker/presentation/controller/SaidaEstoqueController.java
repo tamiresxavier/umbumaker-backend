@@ -29,8 +29,8 @@ public class SaidaEstoqueController {
 
     @PostMapping
     public ResponseEntity<SaidaEstoque> criarSaidaEstoque(@RequestBody SaidaEstoque saidaEstoque) {
-    	SaidaEstoque novoSaidaEstoque = saidaEstoqueService.criarSaidaEstoque(saidaEstoque);
-        return ResponseEntity.status(HttpStatus.CREATED).body(novoSaidaEstoque);
+    	SaidaEstoque novaSaidaEstoque = saidaEstoqueService.criarSaidaEstoque(saidaEstoque);
+        return ResponseEntity.status(HttpStatus.CREATED).body(novaSaidaEstoque);
     }
 
     @PutMapping("/{id}")

@@ -1,5 +1,6 @@
 package br.edu.ifpb.umbumaker.presentation.controller;
 
+import br.edu.ifpb.umbumaker.utils.Utils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,13 +11,15 @@ import br.edu.ifpb.umbumaker.model.Insumo;
 import jakarta.persistence.EntityNotFoundException;
 
 import java.util.List;
+
 @CrossOrigin("*")
 @RestController
-@RequestMapping("/api/umbumaker/insumo")
+@RequestMapping("/api/umbumaker/insumos")
 public class InsumoController {
 
     @Autowired
     private InsumoService insumoService;
+
 
     @PostMapping
     public ResponseEntity<Insumo> criarInsumo(@RequestBody Insumo insumo) {
@@ -24,18 +27,21 @@ public class InsumoController {
         return ResponseEntity.status(HttpStatus.CREATED).body(novoInsumo);
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<Insumo> atualizarInsumo(@PathVariable(value = "id") Long codigo, @RequestBody Insumo insumo) {
-        try {
-        	Insumo insumoAtualizado = insumoService.atualizarInsumo(codigo, insumo);
-            return ResponseEntity.ok(insumoAtualizado);
-        } catch (EntityNotFoundException e) {
-            return ResponseEntity.notFound().build();
+
+    @PutMapping("/{codigo}")
+    public ResponseEntity<Insumo> atualizarInsumo(@PathVariable Long codigo, @RequestBody Insumo insumoModel) {
+        var insumo = this.insumoService.findById(codigo).orElse(null);
+        if(insumo == null){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                    .body(insumo);
         }
+        Utils.copyNonNUllProperties(insumoModel,insumo);
+        var dispositivoUpdate =  this.insumoService.atualizarInsumo(insumo.getCodigo(),insumo);
+        return ResponseEntity.ok().body(dispositivoUpdate);
     }
     
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deletarInsumo(@PathVariable(value = "id") Long codigo) {
+    @DeleteMapping("/{codigo}")
+    public ResponseEntity<Void> deletarInsumo(@PathVariable Long codigo) {
         try {
         	insumoService.deletarInsumo(codigo);
             return ResponseEntity.noContent().build();

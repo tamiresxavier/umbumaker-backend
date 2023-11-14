@@ -2,13 +2,15 @@ package br.edu.ifpb.umbumaker.model;
 
 import java.time.LocalDate;
 
+import br.edu.ifpb.umbumaker.presentation.dto.EntradaEstoqueDto;
+import br.edu.ifpb.umbumaker.presentation.dto.IDto;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
-public class EntradaEstoque {
+public class EntradaEstoque implements IDto<EntradaEstoqueDto> {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long codigo;
@@ -46,6 +48,11 @@ public class EntradaEstoque {
 
 	public void setQuantidade(float quantidade) {
 		this.quantidade = quantidade;
+	}
+
+	@Override
+	public EntradaEstoqueDto toModel() {
+		return new EntradaEstoqueDto (this.dataSaida, this.quantidade);
 	}
 
 }
