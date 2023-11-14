@@ -2,8 +2,8 @@ package br.edu.ifpb.umbumaker.model;
 
 import java.time.LocalDate;
 
-import br.edu.ifpb.umbumaker.presentation.dto.IDto;
 import br.edu.ifpb.umbumaker.presentation.dto.SaidaEstoqueDto;
+import br.edu.ifpb.umbumaker.presentation.dto.IDto;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -14,18 +14,16 @@ public class SaidaEstoque implements IDto<SaidaEstoqueDto> {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long codigo;
-	private LocalDate dataEntrada;
-	private LocalDate dataValidade;
+	private LocalDate dataSaida;
 	private float quantidade;
 	
-	public SaidaEstoque(LocalDate dataEntrada, LocalDate dataValidade, float quantidade) {
-		this.dataEntrada = dataEntrada;
-		this.dataValidade = dataValidade;
+	public SaidaEstoque(LocalDate dataSaida, float quantidade) {
+		this.dataSaida = dataSaida;
 		this.quantidade = quantidade;
 	}
-
+	
 	public SaidaEstoque() {
-		
+
 	}
 
 	public Long getCodigo() {
@@ -36,20 +34,12 @@ public class SaidaEstoque implements IDto<SaidaEstoqueDto> {
 		this.codigo = codigo;
 	}
 
-	public LocalDate getDataEntrada() {
-		return dataEntrada;
+	public LocalDate getDataSaida() {
+		return dataSaida;
 	}
 
-	public void setDataEntrada(LocalDate dataEntrada) {
-		this.dataEntrada = dataEntrada;
-	}
-
-	public LocalDate getDataValidade() {
-		return dataValidade;
-	}
-
-	public void setDataValidade(LocalDate dataValidade) {
-		this.dataValidade = dataValidade;
+	public void setDataSaida(LocalDate dataSaida) {
+		this.dataSaida = dataSaida;
 	}
 
 	public float getQuantidade() {
@@ -62,7 +52,7 @@ public class SaidaEstoque implements IDto<SaidaEstoqueDto> {
 
 	@Override
 	public SaidaEstoqueDto toModel() {
-		return new SaidaEstoqueDto(this.dataEntrada, this.dataValidade, this.quantidade);
+		return new SaidaEstoqueDto (this.dataSaida, this.quantidade);
 	}
-	
+
 }

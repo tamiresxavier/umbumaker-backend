@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.edu.ifpb.umbumaker.business.service.SaidaEstoqueService;
+import br.edu.ifpb.umbumaker.model.EntradaEstoque;
 import br.edu.ifpb.umbumaker.model.SaidaEstoque;
 import jakarta.persistence.EntityNotFoundException;
 

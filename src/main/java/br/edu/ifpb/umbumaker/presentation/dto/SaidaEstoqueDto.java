@@ -1,34 +1,23 @@
 package br.edu.ifpb.umbumaker.presentation.dto;
 
 import java.time.LocalDate;
-
 import br.edu.ifpb.umbumaker.model.SaidaEstoque;
 
 public class SaidaEstoqueDto implements IDto<SaidaEstoque> {
-	private LocalDate dataEntrada;
-	private LocalDate dataValidade;
+	private LocalDate dataSaida;
 	private float quantidade;
 	
-	public SaidaEstoqueDto(LocalDate dataEntrada, LocalDate dataValidade, float quantidade) {
-		this.dataEntrada = dataEntrada;
-		this.dataValidade = dataValidade;
+	public SaidaEstoqueDto(LocalDate dataSaida, float quantidade) {
+		this.dataSaida = dataSaida;
 		this.quantidade = quantidade;
 	}
 
-	public LocalDate getDataEntrada() {
-		return dataEntrada;
+	public LocalDate getDataSaida() {
+		return dataSaida;
 	}
 
-	public void setDataEntrada(LocalDate dataEntrada) {
-		this.dataEntrada = dataEntrada;
-	}
-
-	public LocalDate getDataValidade() {
-		return dataValidade;
-	}
-
-	public void setDataValidade(LocalDate dataValidade) {
-		this.dataValidade = dataValidade;
+	public void setDataSaida(LocalDate dataSaida) {
+		this.dataSaida = dataSaida;
 	}
 
 	public float getQuantidade() {
@@ -41,7 +30,7 @@ public class SaidaEstoqueDto implements IDto<SaidaEstoque> {
 
 	@Override
 	public SaidaEstoque toModel() {
-		return new SaidaEstoque(this.dataEntrada, this.dataValidade, this.quantidade);
+		return new SaidaEstoque (this.dataSaida, this.quantidade);
 	}
-
+	
 }
