@@ -24,7 +24,8 @@ public class EntradaEstoqueService {
                 .orElseThrow(() -> new EntityNotFoundException("Entrada de Estoque não encontrado."));
 
     	entradaEstoqueExistente.setCodigo(entradaEstoque.getCodigo());  
-    	entradaEstoqueExistente.setDataSaida(entradaEstoque.getDataSaida());
+    	entradaEstoqueExistente.setDataEntrada(entradaEstoque.getDataEntrada());
+    	entradaEstoqueExistente.setDataValidade(entradaEstoque.getDataValidade());
     	entradaEstoqueExistente.setQuantidade(entradaEstoque.getQuantidade());
     
         return entradaEstoqueRepository.save(entradaEstoqueExistente);

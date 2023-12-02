@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.edu.ifpb.umbumaker.business.service.EntradaEstoqueService;
 import br.edu.ifpb.umbumaker.model.EntradaEstoque;
+import br.edu.ifpb.umbumaker.model.SaidaEstoque;
 import jakarta.persistence.EntityNotFoundException;
 
 @CrossOrigin("*")

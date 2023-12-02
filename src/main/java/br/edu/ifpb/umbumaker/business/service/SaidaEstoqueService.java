@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import br.edu.ifpb.umbumaker.model.EntradaEstoque;
 import br.edu.ifpb.umbumaker.model.SaidaEstoque;
 import br.edu.ifpb.umbumaker.model.repository.SaidaEstoqueRepository;
 import jakarta.persistence.EntityNotFoundException;
@@ -24,8 +25,7 @@ public class SaidaEstoqueService {
                 .orElseThrow(() -> new EntityNotFoundException("Saida de Estoque não encontrado."));
 
     	saidaEstoqueExistente.setCodigo(saidaEstoque.getCodigo());  
-    	saidaEstoqueExistente.setDataEntrada(saidaEstoque.getDataEntrada());
-    	saidaEstoqueExistente.setDataValidade(saidaEstoque.getDataValidade());
+    	saidaEstoqueExistente.setDataSaida(saidaEstoque.getDataSaida());
     	saidaEstoqueExistente.setQuantidade(saidaEstoque.getQuantidade());
     
         return saidaEstoqueRepository.save(saidaEstoqueExistente);
