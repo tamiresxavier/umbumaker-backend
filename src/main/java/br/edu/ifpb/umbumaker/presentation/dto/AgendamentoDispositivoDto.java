@@ -1,8 +1,10 @@
 package br.edu.ifpb.umbumaker.presentation.dto;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import br.edu.ifpb.umbumaker.model.AgendamentoDispositivo;
+import br.edu.ifpb.umbumaker.model.Dispositivo;
 import br.edu.ifpb.umbumaker.model.enums.StatusObjeto;
 
 public class AgendamentoDispositivoDto implements IDto<AgendamentoDispositivo> {
@@ -12,15 +14,17 @@ public class AgendamentoDispositivoDto implements IDto<AgendamentoDispositivo> {
 	private String descricao;
 	private String politicaDeAceite;
 	private StatusObjeto status;
+	private List<Dispositivo> dispositivos;
 	
 	public AgendamentoDispositivoDto(LocalDate dataSolicitacao, String email, LocalDate dataAgendamento,
-			String descricao, String politicaDeAceite, StatusObjeto status) {
+			String descricao, String politicaDeAceite, StatusObjeto status, List<Dispositivo> dispositivos) {
 		this.dataSolicitacao = dataSolicitacao;
 		this.email = email;
 		this.dataAgendamento = dataAgendamento;
 		this.descricao = descricao;
 		this.politicaDeAceite = politicaDeAceite;
 		this.status = status;
+		this.dispositivos = dispositivos;
 	}
 	
 	public AgendamentoDispositivoDto() {
@@ -75,10 +79,18 @@ public class AgendamentoDispositivoDto implements IDto<AgendamentoDispositivo> {
 		this.status = status;
 	}
 
+	public List<Dispositivo> getDispositivos() {
+		return dispositivos;
+	}
+
+	public void setDispositivos(List<Dispositivo> dispositivos) {
+		this.dispositivos = dispositivos;
+	}
+
 	@Override
 	public AgendamentoDispositivo toModel() {
 		return new AgendamentoDispositivo (this.dataSolicitacao, this.email, this.dataAgendamento, this.descricao,
-				this.politicaDeAceite, this.status);
+				this.politicaDeAceite, this.status, this.dispositivos);
 	}
 
 }

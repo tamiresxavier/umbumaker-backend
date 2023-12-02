@@ -3,12 +3,14 @@ package br.edu.ifpb.umbumaker.presentation.dto;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
 import br.edu.ifpb.umbumaker.model.AgendamentoDispositivo;
+import br.edu.ifpb.umbumaker.model.Dispositivo;
 import br.edu.ifpb.umbumaker.model.enums.StatusObjeto;
 
 @SpringBootTest
@@ -24,9 +26,9 @@ public class AgendamentoDispositivoDtoTest {
         String descricao = "Sample Description";
         String politicaDeAceite = "Sample Policy";
         StatusObjeto status = StatusObjeto.INICIADO;
-
+ 
         // Create an instance of the DTO
-        AgendamentoDispositivoDto agendamentoDto = new AgendamentoDispositivoDto(dataSolicitacao, email, dataAgendamento, descricao, politicaDeAceite, status);
+        AgendamentoDispositivoDto agendamentoDto = new AgendamentoDispositivoDto();
 
         // Test the conversion to the model
         AgendamentoDispositivo agendamentoModel = agendamentoDto.toModel();

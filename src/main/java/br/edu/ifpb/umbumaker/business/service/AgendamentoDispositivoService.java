@@ -30,6 +30,7 @@ public class AgendamentoDispositivoService {
     	agendamentoDispositivoExistente.setDescricao(agendamentoDispositivo.getDescricao());
     	agendamentoDispositivoExistente.setPoliticaDeAceite(agendamentoDispositivo.getPoliticaDeAceite());
     	agendamentoDispositivoExistente.setStatus(agendamentoDispositivo.getStatus());
+    	agendamentoDispositivoExistente.setDispositivos(agendamentoDispositivo.getDispositivos());
     	
         return agendamentoDispositivoRepository.save(agendamentoDispositivoExistente);
     }
