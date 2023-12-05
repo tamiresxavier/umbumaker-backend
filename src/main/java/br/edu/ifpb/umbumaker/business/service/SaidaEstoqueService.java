@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.edu.ifpb.umbumaker.model.EntradaEstoque;
 import br.edu.ifpb.umbumaker.model.SaidaEstoque;
 import br.edu.ifpb.umbumaker.model.repository.SaidaEstoqueRepository;
 import jakarta.persistence.EntityNotFoundException;
