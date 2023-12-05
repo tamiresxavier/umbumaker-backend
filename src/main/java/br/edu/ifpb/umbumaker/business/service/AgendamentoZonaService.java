@@ -23,7 +23,7 @@ public class AgendamentoZonaService {
     	AgendamentoZona agendamentoZonaExistente = agendamentoZonaRepository.findById(codigo)
                 .orElseThrow(() -> new EntityNotFoundException("Agendamento de dispositivo não encontrado."));
 
-    	agendamentoZonaExistente.setCodigo(agendamentoZona.getCodigo());  
+    	//agendamentoZonaExistente.setCodigo(agendamentoZona.getCodigo());  
     	agendamentoZonaExistente.setDataSolicitacao(agendamentoZona.getDataSolicitacao());
     	agendamentoZonaExistente.setDataAgendamento(agendamentoZona.getDataAgendamento());
     	agendamentoZonaExistente.setTempoReservado(agendamentoZona.getTempoReservado());
