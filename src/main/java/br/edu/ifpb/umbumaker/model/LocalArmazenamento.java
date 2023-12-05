@@ -18,6 +18,10 @@ public class LocalArmazenamento implements IModel<LocalArmazenamentoDto> {
 		this.codigoNicho = codigoNicho;
 	}
 
+	public LocalArmazenamento() {
+		// TODO Auto-generated constructor stub
+	}
+	
 	public Long getCodigoArmario() {
 		return codigoArmario;
 	}
